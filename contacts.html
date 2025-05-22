@@ -1,0 +1,42 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact List</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <h1>Contact List</h1>
+    <table id="contactsTable">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Message</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Contacts will be populated here -->
+        </tbody>
+    </table>
+    <script>
+        async function fetchContacts() {
+            const response = await fetch('/api/getContacts');
+            const contacts = await response.json();
+            const tableBody = document.querySelector('#contactsTable tbody');
+            contacts.forEach(contact => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${contact.name}</td>
+                    <td>${contact.email}</td>
+                    <td>${contact.message}</td>
+                `;
+                tableBody.appendChild(row);
+            });
+        }
+        fetchContacts();
+    </script>
+</body>
+</html>
