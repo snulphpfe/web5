@@ -17,6 +17,13 @@ input, textarea {
   padding: 10px;
   margin-bottom: 10px;
 }
+/* Add this below the above rule */
+#contactForm input[type="text"],
+#contactForm input[type="email"],
+#contactForm textarea {
+  width: 25%;
+  box-sizing: border-box;
+}
 button {
   padding: 10px 20px;
   background-color: #28a745;
