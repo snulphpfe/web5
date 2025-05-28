@@ -20,5 +20,42 @@
   </form>
   <div id="response"></div>
   <script src="script.js"></script>
+    <!-- Simple Calculator Start -->
+  <div id="calculator" style="margin-top:40px;">
+    <h2>Calculator</h2>
+    <input type="number" id="calcNum1" placeholder="First number" />
+    <select id="calcOperator">
+      <option value="+">+</option>
+      <option value="-">-</option>
+      <option value="*">*</option>
+      <option value="/">/</option>
+    </select>
+    <input type="number" id="calcNum2" placeholder="Second number" />
+    <button onclick="calculate()">Calculate</button>
+    <div id="calcResult" style="margin-top:10px; font-weight:bold;"></div>
+  </div>
+  <script>
+    function calculate() {
+      const num1 = parseFloat(document.getElementById('calcNum1').value);
+      const num2 = parseFloat(document.getElementById('calcNum2').value);
+      const operator = document.getElementById('calcOperator').value;
+      let result = '';
+      if (isNaN(num1) || isNaN(num2)) {
+        result = 'Please enter valid numbers.';
+      } else {
+        switch (operator) {
+          case '+': result = num1 + num2; break;
+          case '-': result = num1 - num2; break;
+          case '*': result = num1 * num2; break;
+          case '/': 
+            result = num2 !== 0 ? num1 / num2 : 'Cannot divide by zero';
+            break;
+          default: result = 'Invalid operator';
+        }
+      }
+      document.getElementById('calcResult').textContent = result;
+    }
+  </script>
+  <!-- Simple Calculator End -->
 </body>
 </html>
